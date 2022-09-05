@@ -1,0 +1,48 @@
+doctype html 
+html 
+  head
+    block head
+      meta(charset='UTF-8')
+      meta(name='viewport' content='width=device-width, initial-scale=1.0')
+      link(rel='stylesheet' href='/css/style.css')
+      link(rel='shortcut icon' type='/image/png' href='/img/favicon.png')
+      link(rel='styleshet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+      title Natours | #{title}
+
+  body
+        // HEADER
+        //-  including a file
+    include _header
+
+           // CONTENT
+    block content 
+      h1 This is a placeholder heading
+
+       //FOOTER
+      //-  Because it is a footer
+    include _footer
+    //- //- Expose an access object to the global scope (from axios mdn)
+    //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js')
+
+    //- //-  Helping mapbox.js acess tour.pug
+    //- script(src='/js/mapbox.js')
+    //- //- Calling the login file into the base
+    //- script(src='/js/login.js')
+    //- This exposes the stripe object to the global scope
+    script(src='https://js.stripe.com/v3/')
+    //bundle file creates automatically when  watch:js is run because of one line of code in index.js
+    script(src='/js/bundle.js')  // Bundle file that contains all the code in the other files and also in their dependencies
+    
+
+    
+
+    
+
+        
+        
+
+
+
+
+     
+    

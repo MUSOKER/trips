@@ -1,0 +1,5 @@
+//Helps to prevent some important folders from being posted to github
+//the node module folder
+node_modules/
+//The configuration file ie all the enviroment files
+*.env
