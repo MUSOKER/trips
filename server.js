@@ -61,6 +61,18 @@ const server = app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });
 //BELLOW ARE THE ERROR HANDLERS
+process.on('uncaughtException', (err) => {
+  console.log('UNCAUGHT EXCEPTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+process.on('unhandledRejection', (err) => {
+  console.log('UNHANDLED REJECTION! 💥 Shutting down...');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
+});
 //HANDLES ERROR THAT OCCUR IN ASYNCHRONOUS CODE
 //unhandled rejection in the process object
 //This deals with the promise rejection which may not catch in the application is handled here

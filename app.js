@@ -138,7 +138,7 @@ app.use('/api/v1/bookings', bookingRouter); // the created review router importe
 //middleware to run all the requests ie all for get, post , update typed wrongly etc
 app.all('*', (req, res) => {
   //Below calls the constructor whose formula is in the appError.js
-  next(new AppError(`Can't find the ${req.originalUrl} on this server!`), 404); //kind like an object to the constructor and error controller //This skips all the middleware in stake and go to the error handling middleware one it receives next
+  next(new AppError(`Can't find the ${req.originalUrl} on this server!`, 404)); //kind like an object to the constructor and error controller //This skips all the middleware in stake and go to the error handling middleware one it receives next
 }); //* for all the urls
 
 //EXPRESS MIDDLEWARE FOR HANDLING ERRORS (ERROR HANDLING MIDDLEWARE) bt takes on four arguments
