@@ -37,8 +37,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Please confirm your password'], //Meaning its a required input
     validate: {
-      //This only works on CREAT and SAVE!!! ie it can not work on things like update
-      valdator: function (el) {
+      //This only works on CREATE and SAVE!!! ie it can not work on things like update
+      validator: function (el) {
         return el === this.password; //abc=abc returns true therefore no error ie this.password is the initial password
       }, //Callback function which is called when a new document is created
       message: 'Passwords are not the same',
@@ -70,7 +70,7 @@ userSchema.pre('save', async function (next) {
   next();
 });
 
-//Changing the pasword changed ta property to right now incase we modified
+//Changing the pasword changed at property to right now incase we modified
 //Running this function before a new document is saved
 userSchema.pre('save', function (next) {
   if (!this.isModified('password') || this.isNew) return next(); //Incase we did not change the pasword property or if the documment is new then we dont manipulate the passwordChangedAt
