@@ -134,7 +134,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   }
   if (!token) {
     next(
-      new AppError('You are not logged in! Please log into get access', 401)
+      new AppError('You are not logged in! Please log in to get access', 401)
     ); //401 satus code means un authorised
   }
   // 2) Verification of the token
@@ -149,10 +149,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   if (!currentUser) {
     //His id is nolonger in the decode payload ie the user was deleted from the database
     return next(
-      new AppError(
-        'The user belonging to this token does no longer exist.',
-        401
-      )
+      new AppError('The user belonging to this token does nolonger exist.', 401)
     );
   }
   // 4) Check if user changed password after token was issued
